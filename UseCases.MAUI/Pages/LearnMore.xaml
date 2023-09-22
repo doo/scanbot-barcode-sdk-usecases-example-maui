@@ -14,16 +14,17 @@
                     Value="{AppThemeBinding Light={StaticResource LightScanbotSecondary}, Dark={StaticResource DarkScanbotSecondary}}" />
         </Style>
     </ContentView.Resources>
-       <VerticalStackLayout
+
+    <VerticalStackLayout
            Margin="10"
            Style="{StaticResource SupportStyle}"
            Padding="20">
-            <Label 
+        <Label 
                 Text="Having trouble with integrating?"
                 FontSize="Large"
                 Margin="0, 0, 0, 10" />
 
-            <Button
+        <Button
                 Text="Contact Support"
                 TextColor="White"
                 HorizontalOptions="Start"
@@ -33,7 +34,7 @@
                 Margin="0, 0, 0, 10"
                />
 
-            <Button
+        <Button
                 Text="Get your trial license now→"
                 TextColor="{Binding Source={x:Static color:SBColors.ScanbotRed}}"
                 HorizontalOptions="Start"
@@ -43,7 +44,6 @@
                 FontSize="Small"
                 />
 
-        </VerticalStackLayout>
-
+    </VerticalStackLayout>
 </ContentView>
 

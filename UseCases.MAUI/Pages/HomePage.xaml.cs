@@ -44,6 +44,7 @@ public partial class HomePage : ContentPage
     {
         var result = await SBSDK.BarcodeService.OpenBarcodeScannerView(new BarcodeScannerConfiguration
         {
+            SuccessBeepEnabled = false,
             ConfirmationDialogConfiguration = new BarcodeConfirmationDialogConfiguration
             {
                 ResultWithConfirmationEnabled = true,
@@ -85,7 +86,7 @@ public partial class HomePage : ContentPage
     {
         var results = await SBSDK.BarcodeService.OpenBarcodeScannerView(new BarcodeScannerConfiguration
         {
-            FinderEnabled = true,
+            SuccessBeepEnabled = false,
             MinFocusDistanceLock = true,
             ConfirmationDialogConfiguration = new BarcodeConfirmationDialogConfiguration
             {
@@ -105,6 +106,7 @@ public partial class HomePage : ContentPage
     {
         var result = await SBSDK.BarcodeService.OpenBarcodeScannerView(new BarcodeScannerConfiguration
         {
+            SuccessBeepEnabled = false,
             CameraZoomLevel = 1.0f,
             ConfirmationDialogConfiguration = new BarcodeConfirmationDialogConfiguration
             {
@@ -146,6 +148,7 @@ public partial class HomePage : ContentPage
     {
         await SBSDK.BarcodeService.OpenBatchBarcodeScannerView(new BatchBarcodeScannerConfiguration
         {
+            SuccessBeepEnabled = false,
             FinderEnabled = false,
             FinderTextHint = string.Empty,
             CodeDensity = BarcodeDensity.High,
@@ -162,6 +165,7 @@ public partial class HomePage : ContentPage
     {
         await SBSDK.BarcodeService.OpenBatchBarcodeScannerView(new BatchBarcodeScannerConfiguration
         {
+            SuccessBeepEnabled = false,
             FinderEnabled = false,
             FinderTextHint = string.Empty,
             CodeDensity = BarcodeDensity.High,
