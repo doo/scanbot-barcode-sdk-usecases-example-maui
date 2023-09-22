@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:pages="clr-namespace:UseCases.MAUI.Pages"
+             x:Class="UseCases.MAUI.Pages.HomePage"
+             Title="Scanbot Barcode Scanner SDK">
+
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <DataTemplate x:Key="useCaseItemTemplate"
+                          x:DataType="pages:UseCaseOption">
+                      <StackLayout HeightRequest="55"  Padding="10,0">
+                                <Label Text="{Binding Title}"
+                                   VerticalOptions="CenterAndExpand"
+                                   HorizontalOptions="CenterAndExpand"
+                                   FontSize="Default"/>
+                                 <StackLayout
+                                 BackgroundColor="LightGray"
+                                 HeightRequest="0.5" />
+                            </StackLayout>
+            </DataTemplate>
+
+            <DataTemplate x:Key="headerItemTemplate">
+                      <StackLayout HeightRequest="55"
+                                   Padding="10,0">
+                                <Label Text="{Binding }"
+                                   VerticalOptions="CenterAndExpand"
+                                   HorizontalOptions="CenterAndExpand"
+                                   FontSize="Default"/>
+                            </StackLayout>
+            </DataTemplate>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ScrollView>
+        <VerticalStackLayout>
+             <CollectionView x:Name="UseCaseList"
+                       Header="BARCODE SCANNING USE CASES"
+                       HeaderTemplate="{StaticResource headerItemTemplate}"
+                       ItemTemplate="{StaticResource useCaseItemTemplate}"
+                       SelectionMode="Single"
+                       SelectionChanged="UseCaseSelected">
+            </CollectionView>
+            
+            <StackLayout HeightRequest="25" />
+
+            <CollectionView x:Name="ArUseCaseList"
+                    Header="AR OVERLAY USE CASES"
+                    HeaderTemplate="{StaticResource headerItemTemplate}"
+                    ItemTemplate="{StaticResource useCaseItemTemplate}"
+                    SelectionMode="Single"
+                    SelectionChanged="UseCaseSelected">
+            </CollectionView>
+
+            <StackLayout HeightRequest="25" />
+
+            <pages:LearnMore />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
