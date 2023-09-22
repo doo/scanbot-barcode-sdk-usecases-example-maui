@@ -10,7 +10,7 @@ public partial class HomePage : ContentPage
     private List<UseCaseOption> useCases;
     private List<UseCaseOption> arUseCases;
 
-    private const int rowHeight = 55;
+    private const int rowHeight = 45;
 
     public HomePage()
     {
@@ -33,18 +33,17 @@ public partial class HomePage : ContentPage
             };
 
         UseCaseList.ItemsSource = useCases;
-        UseCaseList.MaximumHeightRequest = rowHeight * (useCases.Count + 1); // + 1 for the header
-
         ArUseCaseList.ItemsSource = arUseCases;
-        ArUseCaseList.MaximumHeightRequest = rowHeight * (arUseCases.Count + 1); // + 1 for the header
+
+        // size fix for iOS
+        UseCaseList.HeightRequest = rowHeight * (useCases.Count + 1); // + 1 for the header,
+        ArUseCaseList.HeightRequest = rowHeight * (arUseCases.Count + 1); // + 1 for the header
     }
 
     private async Task ScanSingleBarcode()
     {
-        await SBSDK.BarcodeService.OpenBarcodeScannerView(new BarcodeScannerConfiguration
+        var result = await SBSDK.BarcodeService.OpenBarcodeScannerView(new BarcodeScannerConfiguration
         {
-            SuccessBeepEnabled = false,
-            FinderEnabled = true,
             ConfirmationDialogConfiguration = new BarcodeConfirmationDialogConfiguration
             {
                 ResultWithConfirmationEnabled = true,
@@ -55,45 +54,70 @@ public partial class HomePage : ContentPage
                 RetryButtonTitle = "Retry"
             }
         });
+
+        // result.Barcodes will contain the barcodes which were detected.
     }
 
     private async Task ScanMultipleBarcodes()
     {
-        await SBSDK.BarcodeService.OpenBatchBarcodeScannerView(new BatchBarcodeScannerConfiguration
+        var result = await SBSDK.BarcodeService.OpenBatchBarcodeScannerView(new BatchBarcodeScannerConfiguration
         {
             SuccessBeepEnabled = false,
             FinderEnabled = false,
             FinderTextHint = string.Empty,
             CodeDensity = BarcodeDensity.High
         });
+
+        // result.Barcodes will contain the barcodes which were selected.
     }
 
     private async Task ScanBarcodesInBatch()
     {
-        await SBSDK.BarcodeService.OpenBatchBarcodeScannerView(new BatchBarcodeScannerConfiguration
+        var result = await SBSDK.BarcodeService.OpenBatchBarcodeScannerView(new BatchBarcodeScannerConfiguration
         {
-            SuccessBeepEnabled = false,
-            FinderEnabled = true,
+            SuccessBeepEnabled = false
         });
+
+        // result.Barcodes will contain the barcodes which were selected.
     }
 
     private async Task ScanTinyBarcodes()
     {
-        await SBSDK.BarcodeService.OpenBarcodeScannerView(new BarcodeScannerConfiguration
+        var results = await SBSDK.BarcodeService.OpenBarcodeScannerView(new BarcodeScannerConfiguration
         {
-            SuccessBeepEnabled = false,
             FinderEnabled = true,
             MinFocusDistanceLock = true,
+            ConfirmationDialogConfiguration = new BarcodeConfirmationDialogConfiguration
+            {
+                ResultWithConfirmationEnabled = true,
+                Title = "Scanning Tiny Barcodes",
+                Message = "",
+                ConfirmButtonTitle = "Dismiss",
+                TextFormat = BarcodeTextFormat.Code,
+                RetryButtonTitle = "Retry"
+            }
         });
+
+        // result.Barcodes will contain the barcodes which were detected.
     }
 
     private async Task ScanDistantBarcodes()
     {
-        await SBSDK.BarcodeService.OpenBarcodeScannerView(new BarcodeScannerConfiguration
+        var result = await SBSDK.BarcodeService.OpenBarcodeScannerView(new BarcodeScannerConfiguration
         {
             CameraZoomLevel = 1.0f,
-            SuccessBeepEnabled = false
+            ConfirmationDialogConfiguration = new BarcodeConfirmationDialogConfiguration
+            {
+                ResultWithConfirmationEnabled = true,
+                Title = "Scanning Distant Barcodes",
+                Message = "",
+                ConfirmButtonTitle = "Dismiss",
+                TextFormat = BarcodeTextFormat.Code,
+                RetryButtonTitle = "Retry"
+            }
         });
+
+        // result.Barcodes will contain the barcodes which were detected.
     }
 
     private async Task DetectOnStillImage()
@@ -101,7 +125,6 @@ public partial class HomePage : ContentPage
         var selectedImage = await SBSDK.PickerService.PickImageAsync(new ImagePickerConfiguration { Title = "Gallery" });
         var barcodes = await SBSDK.DetectionService.DetectBarcodesFrom(selectedImage, new BarcodeDetectionConfiguration
         {
-            EngineMode = EngineMode.NextGen,
             AdditionalParameters = new BarcodeScannerAdditionalParameters
             {
                 CodeDensity = BarcodeDensity.High,
@@ -123,7 +146,6 @@ public partial class HomePage : ContentPage
     {
         await SBSDK.BarcodeService.OpenBatchBarcodeScannerView(new BatchBarcodeScannerConfiguration
         {
-            SuccessBeepEnabled = false,
             FinderEnabled = false,
             FinderTextHint = string.Empty,
             CodeDensity = BarcodeDensity.High,
@@ -140,7 +162,6 @@ public partial class HomePage : ContentPage
     {
         await SBSDK.BarcodeService.OpenBatchBarcodeScannerView(new BatchBarcodeScannerConfiguration
         {
-            SuccessBeepEnabled = false,
             FinderEnabled = false,
             FinderTextHint = string.Empty,
             CodeDensity = BarcodeDensity.High,

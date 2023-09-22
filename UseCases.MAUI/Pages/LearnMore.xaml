@@ -3,35 +3,47 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:color="clr-namespace:BarcodeSDK.MAUI.Constants;assembly=BarcodeSDK.MAUI"
              x:Class="UseCases.MAUI.Pages.LearnMore">
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="2*" />
-            <ColumnDefinition Width="*" />
-        </Grid.ColumnDefinitions>
 
+    <ContentView.Resources>
+        <Color x:Key="LightScanbotSecondary">#FFFFEDED</Color>
+        <Color x:Key="DarkScanbotSecondary">#320000</Color>
 
-        <VerticalStackLayout Grid.Column="0">
+        <Style x:Key="SupportStyle"
+               TargetType="VerticalStackLayout">
+            <Setter Property="BackgroundColor"
+                    Value="{AppThemeBinding Light={StaticResource LightScanbotSecondary}, Dark={StaticResource DarkScanbotSecondary}}" />
+        </Style>
+    </ContentView.Resources>
+       <VerticalStackLayout
+           Margin="10"
+           Style="{StaticResource SupportStyle}"
+           Padding="20">
             <Label 
                 Text="Having trouble with integrating?"
-                VerticalOptions="Center" 
-                HorizontalOptions="Center" />
+                FontSize="Large"
+                Margin="0, 0, 0, 10" />
 
             <Button
-                Clicked="SupportClicked"
-                BackgroundColor="{Binding Source={x:Static color:SBColors.ScanbotRed}}"
+                Text="Contact Support"
                 TextColor="White"
-                Text="Contact Support" />
+                HorizontalOptions="Start"
+                BackgroundColor="{Binding Source={x:Static color:SBColors.ScanbotRed}}"
+                FontSize="Small"
+                Clicked="SupportClicked"
+                Margin="0, 0, 0, 10"
+               />
 
-
-            <Label
-                x:Name="trialLink"
+            <Button
+                Text="Get your trial license now→"
                 TextColor="{Binding Source={x:Static color:SBColors.ScanbotRed}}"
-                Text="Get your trial license now"
-                TextDecorations="Underline"
+                HorizontalOptions="Start"
+                Padding="0"
+                BackgroundColor="Transparent"
+                Clicked="TrialClicked"
+                FontSize="Small"
                 />
 
         </VerticalStackLayout>
-        
-    </Grid>
+
 </ContentView>
 

@@ -10,24 +10,21 @@
         <ResourceDictionary>
             <DataTemplate x:Key="useCaseItemTemplate"
                           x:DataType="pages:UseCaseOption">
-                      <StackLayout HeightRequest="55"  Padding="10,0">
+                      <StackLayout HeightRequest="45"  Padding="10,0">
                                 <Label Text="{Binding Title}"
                                    VerticalOptions="CenterAndExpand"
-                                   HorizontalOptions="CenterAndExpand"
+                                   HorizontalOptions="StartAndExpand"
                                    FontSize="Default"/>
-                                 <StackLayout
-                                 BackgroundColor="LightGray"
-                                 HeightRequest="0.5" />
                             </StackLayout>
             </DataTemplate>
 
             <DataTemplate x:Key="headerItemTemplate">
-                      <StackLayout HeightRequest="55"
+                      <StackLayout HeightRequest="45"
                                    Padding="10,0">
                                 <Label Text="{Binding }"
                                    VerticalOptions="CenterAndExpand"
-                                   HorizontalOptions="CenterAndExpand"
-                                   FontSize="Default"/>
+                                   HorizontalOptions="StartAndExpand"
+                                   FontSize="Large"/>
                             </StackLayout>
             </DataTemplate>
         </ResourceDictionary>
@@ -36,7 +33,7 @@
     <ScrollView>
         <VerticalStackLayout>
              <CollectionView x:Name="UseCaseList"
-                       Header="BARCODE SCANNING USE CASES"
+                       Header="Barcode Scanning Use Cases"
                        HeaderTemplate="{StaticResource headerItemTemplate}"
                        ItemTemplate="{StaticResource useCaseItemTemplate}"
                        SelectionMode="Single"
@@ -46,7 +43,7 @@
             <StackLayout HeightRequest="25" />
 
             <CollectionView x:Name="ArUseCaseList"
-                    Header="AR OVERLAY USE CASES"
+                    Header="Barcode AR Overlay Use Cases"
                     HeaderTemplate="{StaticResource headerItemTemplate}"
                     ItemTemplate="{StaticResource useCaseItemTemplate}"
                     SelectionMode="Single"

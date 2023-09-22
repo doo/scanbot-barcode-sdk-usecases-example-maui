@@ -5,12 +5,6 @@ public partial class LearnMore : ContentView
 	public LearnMore()
 	{
 		InitializeComponent();
-
-        var recognizer = new TapGestureRecognizer();
-        recognizer.Tapped += TrialClicked;
-
-        trialLink.GestureRecognizers.Add(recognizer);
-
     }
 
     void SupportClicked(System.Object sender, System.EventArgs e)
