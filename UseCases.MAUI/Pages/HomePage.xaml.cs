@@ -65,7 +65,6 @@ public partial class HomePage : ContentPage
         {
             SuccessBeepEnabled = false,
             FinderEnabled = false,
-            FinderTextHint = string.Empty,
             CodeDensity = BarcodeDensity.High
         });
 
@@ -150,7 +149,6 @@ public partial class HomePage : ContentPage
         {
             SuccessBeepEnabled = false,
             FinderEnabled = false,
-            FinderTextHint = string.Empty,
             CodeDensity = BarcodeDensity.High,
             OverlayConfiguration = new SelectionOverlayConfiguration(
                 automaticSelectionEnabled: true,
@@ -167,7 +165,6 @@ public partial class HomePage : ContentPage
         {
             SuccessBeepEnabled = false,
             FinderEnabled = false,
-            FinderTextHint = string.Empty,
             CodeDensity = BarcodeDensity.High,
             OverlayConfiguration = new SelectionOverlayConfiguration(
                 automaticSelectionEnabled: false,
