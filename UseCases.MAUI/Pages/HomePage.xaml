@@ -11,6 +11,20 @@
             <DataTemplate x:Key="useCaseItemTemplate"
                           x:DataType="pages:UseCaseOption">
                       <StackLayout HeightRequest="45"  Padding="10,0">
+                          <VisualStateManager.VisualStateGroups>
+					        <VisualStateGroup Name="CommonStates">
+						        <VisualState Name="Normal">
+                                    <VisualState.Setters>
+								        <Setter Property="BackgroundColor" Value="Transparent" />
+							        </VisualState.Setters>
+                                </VisualState>
+						        <VisualState Name="Selected">
+							        <VisualState.Setters>
+								        <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource Gray300}, Dark={StaticResource Gray600}}" />
+							        </VisualState.Setters>
+						        </VisualState>
+					        </VisualStateGroup>
+				        </VisualStateManager.VisualStateGroups>
                                 <Label Text="{Binding Title}"
                                    VerticalOptions="CenterAndExpand"
                                    HorizontalOptions="StartAndExpand"
