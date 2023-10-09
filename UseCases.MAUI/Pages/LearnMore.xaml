@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:color="clr-namespace:BarcodeSDK.MAUI.Constants;assembly=BarcodeSDK.MAUI"
+             x:Class="UseCases.MAUI.Pages.LearnMore">
+
+    <ContentView.Resources>
+        <Color x:Key="LightScanbotSecondary">#FFFFEDED</Color>
+        <Color x:Key="DarkScanbotSecondary">#320000</Color>
+
+        <Style x:Key="SupportStyle"
+               TargetType="VerticalStackLayout">
+            <Setter Property="BackgroundColor"
+                    Value="{AppThemeBinding Light={StaticResource LightScanbotSecondary}, Dark={StaticResource DarkScanbotSecondary}}" />
+        </Style>
+    </ContentView.Resources>
+
+    <VerticalStackLayout
+           Margin="10"
+           Style="{StaticResource SupportStyle}"
+           Padding="20">
+        <Label 
+                Text="Having trouble with integrating?"
+                FontSize="Large"
+                Margin="0, 0, 0, 10" />
+
+        <Button
+                Text="Contact Support"
+                TextColor="White"
+                HorizontalOptions="Start"
+                BackgroundColor="{Binding Source={x:Static color:SBColors.ScanbotRed}}"
+                FontSize="Small"
+                Clicked="SupportClicked"
+                Margin="0, 0, 0, 10"
+               />
+
+        <Button
+                Text="Get your trial license now→"
+                TextColor="{Binding Source={x:Static color:SBColors.ScanbotRed}}"
+                HorizontalOptions="Start"
+                Padding="0"
+                BackgroundColor="Transparent"
+                Clicked="TrialClicked"
+                FontSize="Small"
+                />
+
+    </VerticalStackLayout>
+</ContentView>
+
