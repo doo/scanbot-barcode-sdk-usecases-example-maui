@@ -132,7 +132,7 @@ public partial class HomePage : ContentPage
             }
         });
 
-        if (barcodes.Count > 0)
+        if (barcodes?.Count > 0)
         {
             var barcodesAsText = barcodes.Select(barcode => $"{barcode.Format}: {barcode.Text}").ToArray();
             await DisplayActionSheet("Found barcodes", "Dismiss", null, barcodesAsText);
