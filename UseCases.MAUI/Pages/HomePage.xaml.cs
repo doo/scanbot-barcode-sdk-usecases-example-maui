@@ -44,6 +44,7 @@ public partial class HomePage : ContentPage
     {
         var result = await SBSDK.BarcodeService.OpenBarcodeScannerView(new BarcodeScannerConfiguration
         {
+            OrientationLockMode = InterfaceOrientation.Portrait,
             SuccessBeepEnabled = false,
             ConfirmationDialogConfiguration = new BarcodeConfirmationDialogConfiguration
             {
@@ -63,6 +64,7 @@ public partial class HomePage : ContentPage
     {
         var result = await SBSDK.BarcodeService.OpenBatchBarcodeScannerView(new BatchBarcodeScannerConfiguration
         {
+            OrientationLockMode = InterfaceOrientation.Portrait,
             SuccessBeepEnabled = false,
             FinderEnabled = false,
             CodeDensity = BarcodeDensity.High,
@@ -76,6 +78,7 @@ public partial class HomePage : ContentPage
     {
         var result = await SBSDK.BarcodeService.OpenBatchBarcodeScannerView(new BatchBarcodeScannerConfiguration
         {
+            OrientationLockMode = InterfaceOrientation.Portrait,
             SuccessBeepEnabled = false,
             SubmitButtonTitle = "Finish"
         });
@@ -87,6 +90,7 @@ public partial class HomePage : ContentPage
     {
         var result = await SBSDK.BarcodeService.OpenBarcodeScannerView(new BarcodeScannerConfiguration
         {
+            OrientationLockMode = InterfaceOrientation.Portrait,
             SuccessBeepEnabled = false,
             MinFocusDistanceLock = true,
             ConfirmationDialogConfiguration = new BarcodeConfirmationDialogConfiguration
@@ -107,6 +111,7 @@ public partial class HomePage : ContentPage
     {
         var result = await SBSDK.BarcodeService.OpenBarcodeScannerView(new BarcodeScannerConfiguration
         {
+            OrientationLockMode = InterfaceOrientation.Portrait,
             SuccessBeepEnabled = false,
             CameraZoomLevel = 1.0f,
             ConfirmationDialogConfiguration = new BarcodeConfirmationDialogConfiguration
@@ -149,6 +154,7 @@ public partial class HomePage : ContentPage
     {
         var result = await SBSDK.BarcodeService.OpenBatchBarcodeScannerView(new BatchBarcodeScannerConfiguration
         {
+            OrientationLockMode = InterfaceOrientation.Portrait,
             SuccessBeepEnabled = false,
             FinderEnabled = false,
             CodeDensity = BarcodeDensity.High,
@@ -168,6 +174,7 @@ public partial class HomePage : ContentPage
     {
         var result = await SBSDK.BarcodeService.OpenBatchBarcodeScannerView(new BatchBarcodeScannerConfiguration
         {
+            OrientationLockMode = InterfaceOrientation.Portrait,
             SuccessBeepEnabled = false,
             FinderEnabled = false,
             CodeDensity = BarcodeDensity.High,
