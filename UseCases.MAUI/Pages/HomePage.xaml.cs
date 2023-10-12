@@ -50,7 +50,7 @@ public partial class HomePage : ContentPage
                 ResultWithConfirmationEnabled = true,
                 Title = "Scanning Single Barcodes",
                 Message = "",
-                ConfirmButtonTitle = "Dismiss",
+                ConfirmButtonTitle = "Finish",
                 TextFormat = BarcodeTextFormat.Code,
                 RetryButtonTitle = "Retry"
             }
@@ -65,7 +65,8 @@ public partial class HomePage : ContentPage
         {
             SuccessBeepEnabled = false,
             FinderEnabled = false,
-            CodeDensity = BarcodeDensity.High
+            CodeDensity = BarcodeDensity.High,
+            SubmitButtonTitle = "Finish"
         });
 
         // result.Barcodes will contain the barcodes which were selected.
@@ -75,7 +76,8 @@ public partial class HomePage : ContentPage
     {
         var result = await SBSDK.BarcodeService.OpenBatchBarcodeScannerView(new BatchBarcodeScannerConfiguration
         {
-            SuccessBeepEnabled = false
+            SuccessBeepEnabled = false,
+            SubmitButtonTitle = "Finish"
         });
 
         // result.Barcodes will contain the barcodes which were selected.
@@ -83,7 +85,7 @@ public partial class HomePage : ContentPage
 
     private async Task ScanTinyBarcodes()
     {
-        var results = await SBSDK.BarcodeService.OpenBarcodeScannerView(new BarcodeScannerConfiguration
+        var result = await SBSDK.BarcodeService.OpenBarcodeScannerView(new BarcodeScannerConfiguration
         {
             SuccessBeepEnabled = false,
             MinFocusDistanceLock = true,
@@ -92,7 +94,7 @@ public partial class HomePage : ContentPage
                 ResultWithConfirmationEnabled = true,
                 Title = "Scanning Tiny Barcodes",
                 Message = "",
-                ConfirmButtonTitle = "Dismiss",
+                ConfirmButtonTitle = "Finish",
                 TextFormat = BarcodeTextFormat.Code,
                 RetryButtonTitle = "Retry"
             }
@@ -112,7 +114,7 @@ public partial class HomePage : ContentPage
                 ResultWithConfirmationEnabled = true,
                 Title = "Scanning Distant Barcodes",
                 Message = "",
-                ConfirmButtonTitle = "Dismiss",
+                ConfirmButtonTitle = "Finish",
                 TextFormat = BarcodeTextFormat.Code,
                 RetryButtonTitle = "Retry"
             }
@@ -135,21 +137,22 @@ public partial class HomePage : ContentPage
         if (barcodes?.Count > 0)
         {
             var barcodesAsText = barcodes.Select(barcode => $"{barcode.Format}: {barcode.Text}").ToArray();
-            await DisplayActionSheet("Found barcodes", "Dismiss", null, barcodesAsText);
+            await DisplayActionSheet("Found barcodes", "Finish", null, barcodesAsText);
         }
         else
         {
-            await DisplayAlert("No barcodes detected", "Counld not find any barcodes in the selected image. Try again", "Dismiss");
+            await DisplayAlert("No barcodes detected", "Counld not find any barcodes in the selected image. Try again", "Finish");
         }
     }
 
     private async Task ArMultipleScan()
     {
-        await SBSDK.BarcodeService.OpenBatchBarcodeScannerView(new BatchBarcodeScannerConfiguration
+        var result = await SBSDK.BarcodeService.OpenBatchBarcodeScannerView(new BatchBarcodeScannerConfiguration
         {
             SuccessBeepEnabled = false,
             FinderEnabled = false,
             CodeDensity = BarcodeDensity.High,
+            SubmitButtonTitle = "Finish",
             OverlayConfiguration = new SelectionOverlayConfiguration(
                 automaticSelectionEnabled: true,
                 overlayFormat: BarcodeTextFormat.None,
@@ -157,15 +160,18 @@ public partial class HomePage : ContentPage
                 text: Colors.White,
                 textContainer: Colors.Red)
         });
+
+        // result.Barcodes will contain the barcodes which were selected.
     }
 
     private async Task ArSelectScan()
     {
-        await SBSDK.BarcodeService.OpenBatchBarcodeScannerView(new BatchBarcodeScannerConfiguration
+        var result = await SBSDK.BarcodeService.OpenBatchBarcodeScannerView(new BatchBarcodeScannerConfiguration
         {
             SuccessBeepEnabled = false,
             FinderEnabled = false,
             CodeDensity = BarcodeDensity.High,
+            SubmitButtonTitle = "Finish",
             OverlayConfiguration = new SelectionOverlayConfiguration(
                 automaticSelectionEnabled: false,
                 overlayFormat: BarcodeTextFormat.Code,
@@ -173,6 +179,8 @@ public partial class HomePage : ContentPage
                 text: Colors.White,
                 textContainer: Colors.Red)
         });
+
+        // result.Barcodes will contain the barcodes which were selected.
     }
 
     private async void UseCaseSelected(System.Object sender, Microsoft.Maui.Controls.SelectionChangedEventArgs e)
