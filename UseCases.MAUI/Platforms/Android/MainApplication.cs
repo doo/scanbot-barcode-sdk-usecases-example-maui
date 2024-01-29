@@ -1,6 +1,6 @@
 ﻿using Android.App;
 using Android.Runtime;
-using BarcodeSDK.MAUI.Droid.Services;
+using ScanbotSDK.MAUI.Services;
 
 namespace UseCases.MAUI;
 

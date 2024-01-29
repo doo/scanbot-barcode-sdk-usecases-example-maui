@@ -1,5 +1,5 @@
-﻿using BarcodeSDK.MAUI.iOS.Services;
-using Foundation;
+﻿using Foundation;
+using ScanbotSDK.MAUI.Services;
 using SQLitePCL;
 
 namespace UseCases.MAUI;
@@ -9,7 +9,7 @@ public class AppDelegate : MauiUIApplicationDelegate
 {
     protected override MauiApp CreateMauiApp()
     {
-        DependencyManager.Register();
+        DependencyManager.RegisterServices();
         raw.SetProvider(new SQLite3Provider_sqlite3());
 
         return MauiProgram.CreateMauiApp();
