@@ -7,7 +7,7 @@ public partial class App : Application
     public App()
     {
         InitializeComponent();
-        BarcodeSDK.MAUI.ScanbotBarcodeSDK.Initialize(new BarcodeSDK.MAUI.Models.InitializationOptions
+        ScanbotSDK.MAUI.ScanbotBarcodeSDK.Initialize(new ScanbotSDK.MAUI.Models.InitializationOptions
         {
             LicenseKey = LICENSE_KEY,
             LoggingEnabled = true,

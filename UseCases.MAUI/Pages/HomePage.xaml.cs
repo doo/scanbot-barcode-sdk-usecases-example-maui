@@ -1,7 +1,7 @@
-﻿using BarcodeSDK.MAUI.Configurations;
-using BarcodeSDK.MAUI.Constants;
-using BarcodeSDK.MAUI.Services;
-using SBSDK = BarcodeSDK.MAUI.ScanbotBarcodeSDK;
+﻿using ScanbotSDK.MAUI.Configurations;
+using ScanbotSDK.MAUI.Constants;
+using ScanbotSDK.MAUI.Services;
+using SBSDK = ScanbotSDK.MAUI.ScanbotBarcodeSDK;
 
 namespace UseCases.MAUI.Pages;
 

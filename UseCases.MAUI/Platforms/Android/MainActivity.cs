@@ -3,7 +3,7 @@ using Android.App;
 using Android.Content.PM;
 using Android.OS;
 using AndroidX.Core.App;
-using BarcodeSDK.MAUI.Droid.Services;
+using ScanbotSDK.MAUI.Services;
 
 namespace UseCases.MAUI;
 
