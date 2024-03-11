@@ -1,6 +1,5 @@
 ﻿using Android.App;
 using Android.Runtime;
-using BarcodeSDK.MAUI.Droid.Services;
 
 namespace UseCases.MAUI;
 
@@ -15,7 +14,6 @@ public class MainApplication : MauiApplication
 
     protected override MauiApp CreateMauiApp()
     {
-        DependencyManager.RegisterServices();
         return MauiProgram.CreateMauiApp();
     }
 }

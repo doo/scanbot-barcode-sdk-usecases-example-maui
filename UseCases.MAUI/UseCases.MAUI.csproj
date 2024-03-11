@@ -54,10 +54,7 @@
     
     <!-- ===================== Common Project References =====================  -->
     <ItemGroup>
-        <PackageReference Include="SQLitePCLRaw.core" Version="2.1.4" />
-        <PackageReference Include="SQLitePCLRaw.bundle_green" Version="2.1.4" />
-        <PackageReference Include="sqlite-net-pcl" Version="1.8.116" />
-        <PackageReference Include="ScanbotBarcodeSDK.MAUI" Version="3.7.0" />
+        <PackageReference Include="ScanbotBarcodeSDK.MAUI" Version="4.2.0" />
     </ItemGroup>
     
     <!-- ===================== IOS OCR Data Files =====================  -->
